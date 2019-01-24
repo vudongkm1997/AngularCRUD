@@ -1,0 +1,28 @@
+<a class="btn btn-primary" [routerLink]="['/user', 'create']">Create new user</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Photo</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>
+        <a [routerLink]="['/user', user.id]">{{user.id}}</a>
+      </td>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>
+        <img [src]="user.photo" width=100px>
+      </td>
+      <td>
+        <a class="btn btn-primary" [routerLink]="['/user', user.id, 'edit']">Edit</a>
+        <button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
